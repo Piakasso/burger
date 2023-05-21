@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/index.js" defers></script>
     <title>Document</title>
 </head>
 
 <body>
     <div class="wrapper">
-        <header>
+        <header class="header">
             <div class="header__container _container">
                 <div class="header__leftside">
                     <a href="" class="header__logo"><img src="./img/icons/logo.png" alt=""></a>
                     <span class="header__discover _active-link">Discover</span>
-                    <span class="header__make-burger">Make Your Burger</span>
+                    <span class="header__make-burger _start">Make Your Burger</span>
                 </div>
 
                 <div class="header__rightside">
@@ -33,17 +34,132 @@
 
         <div class="main-block ">
             <div class="main-block__container _container">
-                <h1 class="main-block__title">Make Your Burger</h1>
+                <h1 class="main-block__title _title">Make Your Burger</h1>
 
                 <div class="main-block__burger">
-                    <button class="main-block__button">make burger</button>
                     <img src="./img/burger.png" alt="">
+                    <button class="main-block__button _start">make burger</button>
+                </div>
+            </div>
+
+            <div class="constructor _hide">
+                <div class="constructor__container _container">
+                    <h1 class="constructor__title _title">Make Your Burger</h1>
+                    <div class="constructor__burger">
+                        <img class="burger__bun-buttom" src="./img/burger-ingredients/bun_bottom.png" alt="">
+                        <img class="constructor__bg" src="./img/bg.png" alt="">
+                    </div>
+                    <div class="constructor__info">
+                        <span class="info__title">Summary</span>
+                        <span class="info__cost cost_desktop">$ 0.00<button
+                                class="info__button">Checkout</button></span>
+                        <span class="info__text">Build a <span>$10</span> Burger and Get a Gift</span>
+                        <div class="info__items">
+                            <div class="info__item">
+                                <img src="./img/icons/time.png" alt="">
+                                <span>0 min</span>
+                            </div>
+
+                            <div class="info__item">
+                                <img src="./img/icons/volume.png" alt="">
+                                <span>0 oz</span>
+                            </div>
+
+                            <div class="info__item">
+                                <img src="./img/icons/calories.png" alt="">
+                                <span>0 kcal</span>
+                            </div>
+                        </div>
+                        <span class="info__ketchup">+ Tomato Ketchup
+                            <span>1.2 oz</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="ingredients">
+                    <div class="ingredients__container _container">
+                        <div class="ingredients__items">
+                            <div class="ingredients__item">
+                                <img class="item__img" src="./img/burger-ingredients/cutlet.png" alt="">
+                                <span class="item__name">Cutlet</span>
+                                <div class="item__quantity">
+                                    <span class="item__remove _circle" data-name="cutlet">-</span>
+                                    <span class="item__number">0</span>
+                                    <span class="item__add _circle" data-name="cutlet">+</span>
+                                </div>
+                            </div>
+
+                            <div class="ingredients__item">
+                                <img class="item__img" src="./img/burger-ingredients/mayo.png" alt="">
+                                <span class="item__name">Mayo</span>
+                                <div class="item__quantity">
+                                    <span class="item__remove _circle" data-name="mayo">-</span>
+                                    <span class="item__number">0</span>
+                                    <span class="item__add _circle" data-name="mayo">+</span>
+                                </div>
+                            </div>
+
+                            <div class="ingredients__item">
+                                <img class="item__img" src="./img/burger-ingredients/onion.png" alt="">
+                                <span class="item__name">Onion</span>
+                                <div class="item__quantity">
+                                    <span class="item__remove _circle" data-name="onion">-</span>
+                                    <span class="item__number">0</span>
+                                    <span class="item__add _circle" data-name="onion">+</span>
+                                </div>
+                            </div>
+                            <div class="ingredients__item">
+                                <img class="item__img" src="./img/burger-ingredients/tomato.png" alt="">
+                                <span class="item__name">Tomato</span>
+                                <div class="item__quantity">
+                                    <span class="item__remove _circle" data-name="tomato">-</span>
+                                    <span class="item__number">0</span>
+                                    <span class="item__add _circle" data-name="tomato">+</span>
+                                </div>
+                            </div>
+                            <div class="ingredients__item">
+                                <img class="item__img" src="./img/burger-ingredients/cucumber.png" alt="">
+                                <span class="item__name">Cucumber</span>
+                                <div class="item__quantity">
+                                    <span class="item__remove _circle" data-name="cucumber">-</span>
+                                    <span class="item__number">0</span>
+                                    <span class="item__add _circle" data-name="cucumber">+</span>
+                                </div>
+                            </div>
+
+                            <div class="ingredients__item">
+                                <img class="item__img" src="./img/burger-ingredients/cheese.png" alt="">
+                                <span class="item__name">Cheese</span>
+                                <div class="item__quantity">
+                                    <span class="item__remove _circle" data-name="cheese">-</span>
+                                    <span class="item__number">0</span>
+                                    <span class="item__add _circle" data-name="cheese">+</span>
+                                </div>
+                            </div>
+                            <div class="ingredients__item">
+                                <img class="item__img" src="./img/burger-ingredients/salad.png" alt="">
+                                <span class="item__name">Salad</span>
+                                <div class="item__quantity">
+                                    <span class="item__remove _circle" data-name="salad">-</span>
+                                    <span class="item__number">0</span>
+                                    <span class="item__add _circle" data-name="salad">+</span>
+                                </div>
+                            </div>
+                            <div class="ingredients__item">
+                                <img class="item__img" src="./img/burger-ingredients/salad.png" alt="">
+                                <span class="item__name">Salad</span>
+                                <div class="item__quantity">
+                                    <span class="item__remove _circle" data-name="salad">-</span>
+                                    <span class="item__number">0</span>
+                                    <span class="item__add _circle" data-name="salad">+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-        <div class="footer">
+        <footer class="footer">
             <div class="footer__container _container">
                 <p class="footer__copyright">2022. Make Your Burger
                     <span>Privacy Policy</span>
@@ -59,6 +175,14 @@
                     <img src="./img/icons/Property 1=PayPal.png" alt="">
                     <img src="./img/icons/Property 1=Visa.png" alt="">
                 </div>
+            </div>
+        </footer>
+
+        <div class="footer__mobile">
+            <div class="footer__mobile__container _container">
+                <span class="info__cost cost_mobile">$ 0.00
+                    <button class="info__button">Checkout</button>
+                </span>
             </div>
         </div>
     </div>

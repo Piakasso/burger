@@ -70,6 +70,8 @@ button {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 /* Header */
@@ -86,6 +88,9 @@ button {
   align-items: center;
   & span {
     padding: 12px 2px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 .header__logo {
@@ -116,13 +121,22 @@ button {
   color: #ff4d4f;
   border-radius: 99px;
   @include font(16px, 400, 20px);
+  &:hover {
+    cursor: pointer;
+    background-color: #fbb8b8;
+    transition: 500ms;
+  }
 }
 
 .header__tel {
   margin: 0 60px;
   @include font(16px, 600, 20px);
 }
+
 .header__account {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .header__burger-menu {
@@ -170,14 +184,13 @@ button {
 
 .main-block {
   position: relative;
-  margin: auto 0;
 }
 .main-block__container {
   display: flex;
   justify-content: space-between;
 }
 
-.main-block__title {
+._title {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -186,8 +199,9 @@ button {
 }
 .main-block__burger {
   position: relative;
-  max-width: 100%;
-  height: auto;
+  max-width: 850px;
+  transform: translateX(10px);
+
   img {
     max-width: 100%;
     height: auto;
@@ -205,33 +219,28 @@ button {
   @include font(24px, 800, 30px);
   text-transform: uppercase;
   color: #fff;
+  &:hover {
+    background-color: #3b3090;
+    transition: 500ms;
+    cursor: pointer;
+  }
 }
-
-// @keyframes beat {
-//   0% {
-//     transform: scale(1);
-//   }
-//   50% {
-//     transform: scale(1.2);
-//   }
-//   100% {
-//     transform: scale(1);
-//   }
-// }
-// animation: beat 3s infinite linear;
 
 @media (max-width: 1279px) {
   .main-block__burger {
     align-self: center;
-    width: 700px;
+    max-width: 700px;
   }
 }
 @media (max-width: 1023px) {
+  .main-block {
+    margin: auto 0;
+  }
   .main-block__container {
     flex-direction: column;
   }
 
-  .main-block__title {
+  ._title {
     max-width: 100%;
     text-align: center;
   }
@@ -244,8 +253,8 @@ button {
 }
 
 @media (max-width: 767px) {
-  .main-block__title {
-    @include font(48px, 800, 58px);
+  ._title {
+    @include font(48px, 600, 58px);
   }
   .main-block__button {
     width: 120px;
@@ -256,7 +265,7 @@ button {
 
 /* Footer */
 .footer {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 .footer__container {
   display: flex;
@@ -272,18 +281,254 @@ button {
   padding: 0 20px 0 0;
 }
 
+.footer__mobile {
+  display: none;
+}
+
 @media (max-width: 1023px) {
-  .footer__copyright {
+  .footer {
+    display: none;
+  }
+}
+
+@media (max-height: 539px) {
+  .main-block__burger {
+    max-width: 400px;
+  }
+}
+
+/* Constructor */
+
+.constructor__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.constructor__burger {
+  position: relative;
+  height: 600px;
+  width: 600px;
+}
+
+.burger__bun-buttom {
+  width: 85%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.new__layer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+}
+.constructor__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.constructor__info {
+  width: 400px;
+}
+.info__title {
+  display: block;
+  @include font(36px, 600, 49px);
+}
+.info__cost {
+  display: flex;
+  @include font(36px, 800, 49px);
+  color: #5243c2;
+  align-items: center;
+  justify-content: space-between;
+  margin: 50px 0 16px 0;
+  button {
+    padding: 16px 60px;
+    background: #5243c2;
+    color: #fff;
+    border-radius: 99px;
+    &:hover {
+      cursor: pointer;
+      background: #3b3090;
+
+      transition: 500ms;
+    }
+  }
+}
+
+.info__text {
+  display: block;
+  @include font(14px, 400, 20px);
+  margin: 0 0 24px 0;
+  span {
+    color: #ff4d4f;
+    font-weight: 600;
+  }
+}
+.info__items {
+  display: flex;
+  background: #f5f5ff;
+  padding: 16px;
+  border-radius: 99px;
+}
+.info__item {
+  flex-basis: 33%;
+  @include font(14px, 600, 18px);
+}
+
+.info__ketchup {
+  display: block;
+  margin-top: 50px;
+  @include font(18px, 600, 32px);
+  color: #ff4d4f;
+  span {
+    color: #1f2939;
+  }
+}
+
+@media (max-width: 1279px) {
+  .constructor__info {
+    width: 300px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .constructor__container {
+    flex-direction: column;
+  }
+  .constructor__title {
     display: none;
   }
 
-  .footer__container {
-    justify-content: center;
+  .constructor__info {
+    margin-top: 20px;
+  }
+
+  .info__title {
+    display: none;
+  }
+  .info__text {
+    display: none;
+  }
+  .cost_desktop {
+    display: none;
+  }
+
+  .info__ketchup {
+    margin-top: 20px;
+    padding: 16px 50px;
+    @include font(16px, 400, 20px);
+    background: #ffeded;
+    border-radius: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .constructor__title {
+    display: none;
+  }
+  .constructor__burger {
+    height: 320px;
+    width: 320px;
+  }
+}
+
+/* Ingredients */
+
+.ingredients {
+  margin-top: 20px;
+}
+.ingredients__items {
+  display: flex;
+  justify-content: center;
+}
+.ingredients__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 32px;
+  width: 140px;
+  padding: 24px 18px;
+  border: 1px solid #f0f7fa;
+  border-radius: 32px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.item__img {
+  width: 100%;
+  max-height: 49px;
+}
+.item__name {
+  align-self: center;
+  @include font(14px, 600, 20px);
+  margin: 12px 0;
+}
+.item__quantity {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item__number {
+  @include font(20px, 600, 32px);
+}
+._circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: #f5f5ff;
+  color: #5243c2;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+._hide {
+  display: none;
+}
+
+@media (max-width: 1279px) {
+  .ingredients__item {
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .ingredients__item {
+    flex-shrink: 0;
+  }
+  .ingredients__items {
+    overflow-x: auto;
+    justify-content: flex-start;
+
+    width: 100%;
+  }
+  .footer__mobile {
+    display: block;
+  }
+
+  .cost_mobile {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
 @media (max-width: 767px) {
-  .footer__container {
-    display: none;
+  .info__cost {
+    margin: 15px 0 10px 0;
   }
 }
