@@ -59,15 +59,31 @@ window.addEventListener("DOMContentLoaded", function (e) {
   buttonsAdd.forEach((item) => {
     item.addEventListener("click", (e) => {
       let newElement = document.createElement("img");
-      newElement.src = `../img/burger-ingredients/${e.target.getAttribute(
-        "data-name"
-      )}.png`;
-      newElement.classList.add(`new__layer${zIndex - 2}`);
-      newElement.classList.add("new__layer");
-      newElement.style.zIndex = `${zIndex++}`;
-      newElement.style.bottom = `${(bottom += 15)}px`;
-      constructorField.prepend(newElement);
-      console.log(bottom);
+      //   fetch("../data.json")
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       console.log(data);
+      //       newElement.src = `../img/burger-ingredients/${e.target.getAttribute(
+      //         "data-name"
+      //       )}.png`;
+      //     });
+
+      if (
+        e.target.getAttribute("data-name") == "cutlet" ||
+        e.target.getAttribute("data-name") == "bun_middle"
+      ) {
+        newElement.classList.add(`new__layer${zIndex - 2}`);
+        newElement.classList.add("new__layer");
+        newElement.style.zIndex = `${zIndex++}`;
+        newElement.style.bottom = `${(bottom += 5)}%`;
+        constructorField.prepend(newElement);
+      } else {
+        newElement.classList.add(`new__layer${zIndex - 2}`);
+        newElement.classList.add("new__layer");
+        newElement.style.zIndex = `${zIndex++}`;
+        newElement.style.bottom = `${(bottom += 1.5)}%`;
+        constructorField.prepend(newElement);
+      }
     });
   });
 });
