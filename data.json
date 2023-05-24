@@ -1,97 +1,92 @@
 [
   {
-    "name": "Bun-top",
+    "name": "bun_top",
     "kcal": 120,
-    "oz": 0.2,
+    "gramm": 50,
     "price": 1,
     "min": 3,
-    "img": "img/data/bun_top.png",
-    "width": 0,
-    "auto": true
+    "img": "img/burger-ingredients/bun_top.png",
+    "width": 0
   },
   {
-    "name": "Bun-bottom",
+    "name": "bun_bottom",
     "kcal": 90,
-    "oz": 0.2,
+    "gramm": 50,
     "price": 1,
     "min": 3,
-    "img": "img/data/bun_bottom.png",
-    "width": 6,
-    "auto": true
+    "img": "img/burger-ingredients/bun_bottom.png",
+    "width": 6
   },
   {
-    "name": "Cutlet",
+    "name": "cutlet",
     "kcal": 249,
-    "oz": 0.2,
+    "gramm": 100,
     "price": 4.3,
     "min": 3,
-    "img": "img/data/cutlet.png",
-    "width": 3
+    "img": "img/burger-ingredients/cutlet.png",
+    "width": 4
   },
   {
-    "name": "Mayo",
+    "name": "mayo",
     "kcal": 120,
-    "oz": 0.1,
+    "gramm": 50,
     "price": 1.4,
     "min": 0.5,
-    "img": "img/data/mayo.png",
+    "img": "img/burger-ingredients/mayo.png",
     "width": 1
   },
   {
-    "name": "Onion",
+    "name": "onion",
     "kcal": 50,
-    "oz": 0.1,
+    "gramm": 30,
     "price": 1.1,
     "min": 0.3,
-    "img": "img/data/onion.png",
-    "img_group": "img/data/onion_group.png",
-    "width": 3
+    "img": "img/burger-ingredients/onion.png",
+    "width": 1
   },
   {
-    "name": "Tomato",
+    "name": "tomato",
     "kcal": 60,
-    "oz": 0.2,
+    "gramm": 70,
     "price": 1,
     "min": 0.5,
-    "img": "img/data/tomato.png",
-    "img_group": "img/data/tomato_group.png",
+    "img": "img/burger-ingredients/tomato.png",
     "width": 4
   },
   {
-    "name": "Cucumber",
+    "name": "cucumber",
     "kcal": 70,
-    "oz": 0.2,
+    "gramm": 70,
     "price": 1,
     "min": 1,
-    "img": "img/data/cucumber.png",
-    "img_group": "img/data/cucumber_group.png",
-    "width": 2.5
+    "img": "img/burger-ingredients/cucumber.png",
+    "width": 2
   },
   {
-    "name": "Cheese",
+    "name": "cheese",
     "kcal": 90,
-    "oz": 0.2,
+    "gramm": 50,
     "price": 1,
     "min": 0.4,
-    "img": "img/data/cheese.png",
-    "width": 2.5
+    "img": "img/burger-ingredients/cheese.png",
+    "width": 1
   },
   {
-    "name": "Salad",
+    "name": "salad",
     "kcal": 40,
-    "oz": 0.2,
+    "gramm": 15,
     "price": 1,
     "min": 1.2,
-    "img": "img/data/salad.png",
-    "width": 3
+    "img": "img/burger-ingredients/salad.png",
+    "width": 4
   },
   {
-    "name": "Bun",
+    "name": "bun_middle",
     "kcal": 120,
-    "oz": 0.2,
+    "gramm": 50,
     "price": 1,
     "min": 1,
-    "img": "img/data/bun_middle.png",
-    "width": 4
+    "img": "img/burger-ingredients/bun_middle.png",
+    "width": 7
   }
 ]

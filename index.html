@@ -36,7 +36,7 @@
             <div class="main-block__container _container">
                 <h1 class="main-block__title _title">Make Your Burger</h1>
 
-                <div class="main-block__burger">
+                <div class="main-block__burger ">
                     <img src="./img/burger.png" alt="">
                     <button class="main-block__button _start">make burger</button>
                 </div>
@@ -47,27 +47,33 @@
                     <h1 class="constructor__title _title">Make Your Burger</h1>
                     <div class="constructor__burger">
                         <img class="burger__bun-buttom" src="./img/burger-ingredients/bun_bottom.png" alt="">
+                        <div class="constructor__notice _hide">
+                            <span>Are you sure??</span>
+                            <img src="./img/icons/image 216.png" alt="">
+                        </div>
                         <img class="constructor__bg" src="./img/bg.png" alt="">
                     </div>
                     <div class="constructor__info">
                         <span class="info__title">Summary</span>
-                        <span class="info__cost cost_desktop">$ 0.00<button
-                                class="info__button">Checkout</button></span>
+                        <div class="info__cost cost_desktop">
+                            <span>$ 0.00</span>
+                            <button class="info__button">Checkout</button>
+                        </div>
                         <span class="info__text">Build a <span>$10</span> Burger and Get a Gift</span>
                         <div class="info__items">
-                            <div class="info__item">
+                            <div class="info__item _clock">
                                 <img src="./img/icons/time.png" alt="">
                                 <span>0 min</span>
                             </div>
 
-                            <div class="info__item">
+                            <div class="info__item _weight">
                                 <img src="./img/icons/volume.png" alt="">
-                                <span>0 oz</span>
+                                <span>50 gr</span>
                             </div>
 
-                            <div class="info__item">
+                            <div class="info__item _calories">
                                 <img src="./img/icons/calories.png" alt="">
-                                <span>0 kcal</span>
+                                <span>90 kcal</span>
                             </div>
                         </div>
                         <span class="info__ketchup">+ Tomato Ketchup
@@ -180,10 +186,79 @@
 
         <div class="footer__mobile">
             <div class="footer__mobile__container _container">
-                <span class="info__cost cost_mobile">$ 0.00
+                <div class="info__cost cost_mobile">
+                    <span>$ 0.00 </span>
                     <button class="info__button">Checkout</button>
-                </span>
+                </div>
             </div>
+        </div>
+
+        <div class="checkout _hide">
+            <form class="checkout__popup">
+                <div class="popup__header">
+                    <span class="popup__title">Checkout</span>
+                    <img src="./img/icons/cross.png" alt="">
+                </div>
+
+                <div class="popup__content">
+
+
+                    <div class="content__item">
+                        <div class="item__icon">
+                            <img src="./img/icons/emotion-happy-line.png" alt="">
+                        </div>
+                        <div class="item__text"> <label for="name">Your Name</label>
+                            <input type="text" id="name" class="item__field" required placeholder="Vladimir Lenin">
+                        </div>
+                    </div>
+
+
+                    <div class="content__item">
+                        <div class="item__icon">
+                            <img src="./img/icons/phone-fill.png" alt="">
+                        </div>
+                        <div class="item__text">
+                            <label for="phone">Your Phone</label>
+                            <input type="tel" id="phone" class="item__field" required placeholder="+7 111 111 11 11">
+                        </div>
+                    </div>
+
+                    <div class="content__item">
+                        <div class="item__icon">
+                            <img src="./img/icons/route-line.png" alt="">
+                        </div>
+                        <div class="item__text">
+                            <label for="address">Shipping Address</label>
+                            <input type="text" id="address" placeholder="Red square, Mausoleum" class="item__field"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="content__item">
+                        <div class="item__icon">
+                            <img src="./img/icons/tme.png" alt="">
+                        </div>
+                        <div class="item__text">
+                            <label for="time">Time to Delivery</label>
+                            <select name="hour" id="time">
+                                <option value="12">12:00</option>
+                                <option value="13">13:00</option>
+                                <option value="14">14:00</option>
+                                <option value="15" selected>15:00</option>
+                                <option value="16">16:00</option>
+                                <option value="17">17:00</option>
+                                <option value="18">18:00</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="popup__buttons">
+                    <button class="_cancel">Cancel</button>
+                    <button class="_submit" type="submit">Checkout</button>
+                </div>
+
+            </form>
         </div>
     </div>
 </body>
