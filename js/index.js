@@ -14,12 +14,19 @@ window.addEventListener("DOMContentLoaded", function (e) {
     costs = document.querySelectorAll(".info__cost span"),
     deleteButtons = document.querySelectorAll(".item__remove"),
     notice = document.querySelector(".constructor__notice"),
-    bunTop = document.querySelector(".bun_top"),
-    checkoutButton = document.querySelector(".info__button"),
+    footerMobile = document.querySelector(".footer__mobile"),
+    checkoutButtons = document.querySelectorAll(".info__button"),
     checkoutPage = document.querySelector(".checkout"),
     closePopup = document.querySelector(".popup__header img"),
-    popup = document.querySelector(".checkout__popup");
+    ketchup = document.querySelector(".info__ketchup");
 
+  //Count add/remove ingredients
+  let zIndex = 3,
+    bottomMargin = 0,
+    numOfMinutes = 0,
+    numOfGramms = 50,
+    numOfCalories = 90,
+    numOfMoney = 0;
   // Activate first page
 
   function activateFirstPage() {
@@ -30,6 +37,7 @@ window.addEventListener("DOMContentLoaded", function (e) {
         headerDiscoverLink.classList.remove("_active-link");
         startPage.classList.add("_hide");
         constructor.classList.remove("_hide");
+        footerMobile.classList.remove("_hide");
       });
     });
 
@@ -43,13 +51,21 @@ window.addEventListener("DOMContentLoaded", function (e) {
   }
   activateFirstPage();
 
-  //Count add/remove ingredients
-  let zIndex = 3;
-  let bottomMargin = 0;
-  let numOfMinutes = 0,
-    numOfGramms = 50,
-    numOfCalories = 90,
-    numOfMoney = 0;
+  // Add ketchup
+  function addKetchup() {
+    ketchup.addEventListener("click", (e) => {
+      e.preventDefault();
+      numOfMoney += 1;
+      numOfGramms += 50;
+      numOfCalories += 55;
+      costs.forEach((cost) => {
+        cost.textContent = `$ ${numOfMoney.toFixed(1)}`;
+      });
+      weightOfMeal.textContent = `${numOfGramms.toFixed(1)} gr`;
+      caloriesOfMeal.textContent = `${numOfCalories.toFixed(1)} kcal`;
+    });
+  }
+  addKetchup();
 
   ingredients.forEach((item) => {
     let counter = 0;
@@ -83,7 +99,7 @@ window.addEventListener("DOMContentLoaded", function (e) {
                   }
                 });
 
-                // Add calculator of calories
+                // Add calculator
 
                 function addNumToCalc() {
                   numOfMinutes += data[i].min;
@@ -153,12 +169,13 @@ window.addEventListener("DOMContentLoaded", function (e) {
             } else if (counter > 0) {
             }
           }
+
           // Maybe Enough
 
           if (
-            numOfGramms >= 1600 ||
-            numOfMoney >= 70 ||
-            numOfCalories >= 2800
+            numOfGramms >= 1400 ||
+            numOfMoney >= 50 ||
+            numOfCalories >= 2500
           ) {
             notice.classList.remove("_hide");
           } else {
@@ -177,46 +194,48 @@ window.addEventListener("DOMContentLoaded", function (e) {
       }
     }
   }
-  checkoutButton.addEventListener("click", (e) => {
-    e.preventDefault();
+  checkoutButtons.forEach((checkoutButton) => {
+    checkoutButton.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    if (numOfMoney < 4 && numOfMoney > 0) {
-      notice.classList.remove("_hide");
-      notice.innerHTML = ` <span>Minimum  order 4$</span>
-      <img src="./img/icons/monkey.png" alt="">
-`;
-    } else if (numOfMoney == 0) {
-      notice.classList.remove("_hide");
-      notice.innerHTML = ` <span>Invisible burger....Hmmmm...</span>
-    <img src="./img/icons/hmm.png" alt="">
-`;
-    } else {
-      let newElement = document.createElement("img");
-      newElement.src = "../img/burger-ingredients/bun_top.png";
-      newElement.classList.add("new__layer");
-      newElement.classList.add("bun_top");
-      newElement.style.zIndex = `${zIndex++}`;
-      newElement.style.bottom = `${bottomMargin + 10}%`;
-      constructorField.prepend(newElement);
+      if (numOfMoney < 5 && numOfMoney > 0) {
+        notice.classList.remove("_hide");
+        notice.innerHTML = ` <span>Minimum  order 4$</span>
+        <img src="./img/icons/monkey.png" alt="">
+  `;
+      } else if (numOfMoney == 0) {
+        notice.classList.remove("_hide");
+        notice.innerHTML = ` <span>Invisible burger....Hmmmm...</span>
+      <img src="./img/icons/hmm.png" alt="">
+  `;
+      } else {
+        let newElement = document.createElement("img");
+        newElement.src = "../img/burger-ingredients/bun_top.png";
+        newElement.classList.add("new__layer");
+        newElement.classList.add("bun_top");
+        newElement.style.zIndex = `${zIndex++}`;
+        newElement.style.bottom = `${bottomMargin + 10}%`;
+        constructorField.prepend(newElement);
 
-      let bunTimer = setTimeout(function () {
-        checkoutPage.classList.remove("_hide");
-      }, 2000);
-    }
-  });
+        let bunTimer = setTimeout(function () {
+          checkoutPage.classList.remove("_hide");
+        }, 2000);
+      }
+    });
 
-  checkoutPage.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (e.target == closePopup || e.target === checkoutPage) {
-      checkoutPage.classList.add("_hide");
-      deleteTopBun();
-    }
-  });
+    checkoutPage.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (e.target == closePopup || e.target === checkoutPage) {
+        checkoutPage.classList.add("_hide");
+        deleteTopBun();
+      }
+    });
 
-  document.addEventListener("keydown", (e) => {
-    if (checkoutPage && e.key === "Escape") {
-      checkoutPage.classList.add("_hide");
-      deleteTopBun();
-    }
+    document.addEventListener("keydown", (e) => {
+      if (checkoutPage && e.key === "Escape") {
+        checkoutPage.classList.add("_hide");
+        deleteTopBun();
+      }
+    });
   });
 });

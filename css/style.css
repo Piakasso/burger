@@ -298,6 +298,9 @@ button {
   .footer {
     display: none;
   }
+  .footer__mobile {
+    display: block;
+  }
 }
 @media (max-height: 539px) {
   .main-block__burger {
@@ -432,11 +435,15 @@ button {
 
 .info__ketchup {
   display: block;
-  margin-top: 50px;
+  margin-top: 30px;
+  padding: 12px 10px;
   font-size: 18px;
   font-weight: 600;
   line-height: 32px;
   color: #ff4d4f;
+  background: #ffeded;
+  border-radius: 20px;
+  text-align: center;
 }
 .info__ketchup span {
   color: #1f2939;
@@ -486,8 +493,6 @@ button {
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
-    background: #ffeded;
-    border-radius: 20px;
   }
 }
 @media (max-width: 767px) {
@@ -589,9 +594,6 @@ button {
     overflow-x: auto;
     justify-content: flex-start;
     width: 100%;
-  }
-  .footer__mobile {
-    display: block;
   }
   .cost_mobile {
     display: flex;

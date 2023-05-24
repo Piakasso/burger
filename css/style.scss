@@ -299,6 +299,10 @@ button {
   .footer {
     display: none;
   }
+
+  .footer__mobile {
+    display: block;
+  }
 }
 
 @media (max-height: 539px) {
@@ -426,9 +430,13 @@ button {
 
 .info__ketchup {
   display: block;
-  margin-top: 50px;
+  margin-top: 30px;
+  padding: 12px 10px;
   @include font(18px, 600, 32px);
   color: #ff4d4f;
+  background: #ffeded;
+  border-radius: 20px;
+  text-align: center;
   span {
     color: #1f2939;
   }
@@ -483,8 +491,6 @@ button {
     margin-top: 20px;
     padding: 16px 50px;
     @include font(16px, 400, 20px);
-    background: #ffeded;
-    border-radius: 20px;
   }
 }
 @media (max-width: 767px) {
@@ -584,9 +590,6 @@ button {
     justify-content: flex-start;
 
     width: 100%;
-  }
-  .footer__mobile {
-    display: block;
   }
 
   .cost_mobile {
