@@ -229,10 +229,9 @@ button {
   text-transform: uppercase;
   color: #fff;
   &:hover {
+    cursor: pointer;
     background-color: #3b3090;
     transition: 500ms ease-in-out;
-    cursor: pointer;
-    transform: scale(1.2);
   }
 }
 
@@ -437,14 +436,11 @@ button {
   background: #ffeded;
   border-radius: 20px;
   text-align: center;
+  &:hover {
+    cursor: pointer;
+  }
   span {
     color: #1f2939;
-  }
-}
-
-@media (max-width: 1279px) {
-  .constructor__info {
-    width: 300px;
   }
 }
 
@@ -687,6 +683,12 @@ button {
 ._submit {
   background: #5243c2;
   color: #fff;
+}
+
+.checkout__success {
+  text-align: center;
+  padding: 20px;
+  @include font(18px, 700, 20px);
 }
 
 @media (max-width: 767px) {

@@ -231,10 +231,9 @@ button {
   color: #fff;
 }
 .main-block__button:hover {
+  cursor: pointer;
   background-color: #3b3090;
   transition: 500ms ease-in-out;
-  cursor: pointer;
-  transform: scale(1.2);
 }
 
 @media (max-width: 1279px) {
@@ -445,15 +444,13 @@ button {
   border-radius: 20px;
   text-align: center;
 }
+.info__ketchup:hover {
+  cursor: pointer;
+}
 .info__ketchup span {
   color: #1f2939;
 }
 
-@media (max-width: 1279px) {
-  .constructor__info {
-    width: 300px;
-  }
-}
 @media (max-width: 1023px) {
   .constructor__container {
     flex-direction: column;
@@ -694,6 +691,14 @@ button {
 ._submit {
   background: #5243c2;
   color: #fff;
+}
+
+.checkout__success {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
 }
 
 @media (max-width: 767px) {
