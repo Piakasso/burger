@@ -61,6 +61,20 @@ button {
   margin: 0 auto;
 }
 
+._circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: #f5f5ff;
+  color: #5243c2;
+}
+._circle:hover {
+  cursor: pointer;
+}
+
 .wrapper {
   position: relative;
   min-height: 100vh;
@@ -68,10 +82,6 @@ button {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-}
-
-._disabled {
-  pointer-events: none;
 }
 
 /* Header */
@@ -557,20 +567,6 @@ button {
   line-height: 32px;
 }
 
-._circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 28px;
-  width: 28px;
-  border-radius: 50%;
-  background: #f5f5ff;
-  color: #5243c2;
-}
-._circle:hover {
-  cursor: pointer;
-}
-
 ._hide {
   display: none;
 }
@@ -682,6 +678,9 @@ button {
   padding: 16px 34px;
   border-radius: 99px;
 }
+.popup__buttons button:hover {
+  cursor: pointer;
+}
 
 ._cancel {
   background: #f5f5ff;
@@ -719,9 +718,6 @@ button {
     margin: 10px;
     padding: 14px 24px;
     border-radius: 99px;
-  }
-  .popup__buttons button:hover {
-    cursor: pointer;
   }
   .item__text {
     width: 80%;

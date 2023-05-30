@@ -65,6 +65,20 @@ button {
   margin: 0 auto;
 }
 
+._circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: #f5f5ff;
+  color: #5243c2;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .wrapper {
   position: relative;
   min-height: 100vh;
@@ -72,10 +86,6 @@ button {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-}
-
-._disabled {
-  pointer-events: none;
 }
 
 /* Header */
@@ -549,19 +559,6 @@ button {
 .item__number {
   @include font(20px, 600, 32px);
 }
-._circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 28px;
-  width: 28px;
-  border-radius: 50%;
-  background: #f5f5ff;
-  color: #5243c2;
-  &:hover {
-    cursor: pointer;
-  }
-}
 
 ._hide {
   display: none;
@@ -669,6 +666,9 @@ button {
   justify-content: end;
 
   button {
+    &:hover {
+      cursor: pointer;
+    }
     width: 120px;
     margin: 16px;
     padding: 16px 34px;
@@ -707,9 +707,6 @@ button {
     justify-content: center;
 
     button {
-      &:hover {
-        cursor: pointer;
-      }
       width: 120px;
       margin: 10px;
       padding: 14px 24px;

@@ -53,7 +53,7 @@ const data = [
     price: 1,
     min: 0.5,
     img: "img/burger-ingredients/tomato.png",
-    width: 4,
+    width: 5.5,
   },
   {
     name: "cucumber",
@@ -62,7 +62,7 @@ const data = [
     price: 1,
     min: 1,
     img: "img/burger-ingredients/cucumber.png",
-    width: 2,
+    width: 1,
   },
   {
     name: "cheese",
@@ -89,7 +89,7 @@ const data = [
     price: 1,
     min: 1,
     img: "img/burger-ingredients/bun_middle.png",
-    width: 11,
+    width: 10,
   },
 ];
 
@@ -211,7 +211,7 @@ window.addEventListener("DOMContentLoaded", function (e) {
       }
 
       //Push delete buttons
-      else if (e.target.classList.contains("item__remove")) {
+      else if (e.target.classList.contains("item__remove") && counter > 0) {
         let action = e.target;
         counter -= 1;
         action.nextElementSibling.textContent = `${counter}`;
@@ -250,19 +250,13 @@ window.addEventListener("DOMContentLoaded", function (e) {
           }
         }
         deleteNumToCalc();
-
-        // Ban of negative values
-        if (counter <= 0) {
-          counter = 0;
-          action.nextElementSibling.textContent = "0";
-          action.classList.add("_disabled");
-        } else if (counter > 0) {
-        }
       }
 
       // Maybe Enough
       if (numOfGramms >= 1400 || numOfMoney >= 50 || numOfCalories >= 2500) {
         notice.classList.remove("_hide");
+        notice.innerHTML = `<span>Maybe enough???</span>
+        <img src="./img/icons/image216.png" alt="">`;
       } else {
         notice.classList.add("_hide");
       }
@@ -283,6 +277,7 @@ window.addEventListener("DOMContentLoaded", function (e) {
       e.preventDefault();
 
       if (numOfMoney < 5 && numOfMoney > 0) {
+        console.log(numOfMoney);
         notice.classList.remove("_hide");
         notice.innerHTML = ` <span>Minimum  order 5$</span>
         <img src="./img/icons/monkey.png" alt="">
