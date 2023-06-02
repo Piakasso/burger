@@ -1,4 +1,16 @@
 "use strict";
+
+import {
+  addKetchup,
+  numOfMoney,
+  notice,
+  addLayers,
+  putTopBun,
+  numOfMinutes,
+} from "./components/putIngredients.js";
+
+import { hideCheckoutPage, confirmOrder } from "./components/modalPopup.js";
+
 // Fake database
 const data = [
   {
@@ -93,35 +105,14 @@ const data = [
   },
 ];
 
-window.addEventListener("DOMContentLoaded", function (e) {
+window.addEventListener("DOMContentLoaded", function () {
   const startMakeBurger = document.querySelectorAll("._start"),
     startPage = document.querySelector(".main-block__container"),
     constructor = document.querySelector(".constructor"),
     headerDiscoverLink = document.querySelector(".header__discover"),
     headerMakeBurgerLink = document.querySelector(".header__make-burger"),
-    constructorField = document.querySelector(".constructor__burger"),
-    ingredients = document.querySelectorAll(".ingredients__item"),
-    timerOfMeal = document.querySelector("._clock span"),
-    weightOfMeal = document.querySelector("._weight span"),
-    caloriesOfMeal = document.querySelector("._calories span"),
-    costs = document.querySelectorAll(".info__cost span"),
-    deleteButtons = document.querySelectorAll(".item__remove"),
-    notice = document.querySelector(".constructor__notice"),
     footerMobile = document.querySelector(".footer__mobile"),
-    checkoutButtons = document.querySelectorAll(".info__button"),
-    checkoutPage = document.querySelector(".checkout"),
-    closePopup = document.querySelector(".popup__header img"),
-    ketchup = document.querySelector(".info__ketchup"),
-    popup = document.querySelector(".checkout__popup"),
-    popupButtons = document.querySelector(".popup__buttons");
-
-  //Count add/remove ingredients
-  let zIndex = 3,
-    bottomMargin = 0,
-    numOfMinutes = 0,
-    numOfGramms = 50,
-    numOfCalories = 90,
-    numOfMoney = 0;
+    checkoutButtons = document.querySelectorAll(".info__button");
 
   // Activate first page
   function activateFirstPage() {
@@ -146,138 +137,17 @@ window.addEventListener("DOMContentLoaded", function (e) {
 
   activateFirstPage();
 
-  // Add ketchup
-  function addKetchup() {
-    ketchup.addEventListener("click", (e) => {
-      e.preventDefault();
-      numOfMoney += 1;
-      numOfGramms += 50;
-      numOfCalories += 55;
-      costs.forEach((cost) => {
-        cost.textContent = `$ ${numOfMoney.toFixed(1)}`;
-      });
-      weightOfMeal.textContent = `${numOfGramms.toFixed(1)} gr`;
-      caloriesOfMeal.textContent = `${numOfCalories.toFixed(1)} kcal`;
-    });
-  }
+  addLayers(data);
+
   addKetchup();
 
-  // Ingredients
-  ingredients.forEach((item) => {
-    let counter = 0;
-    item.addEventListener("click", (e) => {
-      //Push add buttons
-      if (e.target.classList.contains("item__add")) {
-        let action = e.target;
-        let newElement = document.createElement("img");
-        counter += 1;
-        action.previousElementSibling.textContent = `${counter}`;
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].name == action.getAttribute("data-name")) {
-            newElement.src = `${data[i].img}`;
-            newElement.classList.add("new__layer");
-            newElement.style.zIndex = `${zIndex++}`;
-            newElement.setAttribute("data-name", `${data[i].name}`);
-            newElement.setAttribute("data-width", `${data[i].width}`);
-            bottomMargin += data[i].width;
-            newElement.style.bottom = `${bottomMargin}%`;
-            constructorField.prepend(newElement);
-            deleteButtons.forEach((button) => {
-              if (
-                action.getAttribute("data-name") ===
-                button.getAttribute("data-name")
-              ) {
-                button.classList.remove("_disabled");
-              }
-            });
-
-            //Add calculator
-
-            function addNumToCalc() {
-              numOfMinutes += data[i].min;
-              numOfGramms += data[i].gramm;
-              numOfCalories += data[i].kcal;
-              numOfMoney += data[i].price;
-              timerOfMeal.textContent = `${numOfMinutes.toFixed(1)} min`;
-              weightOfMeal.textContent = `${numOfGramms.toFixed(1)} gr`;
-              caloriesOfMeal.textContent = `${numOfCalories.toFixed(1)} kcal`;
-              costs.forEach((cost) => {
-                cost.textContent = `$ ${numOfMoney.toFixed(1)}`;
-              });
-            }
-            addNumToCalc();
-          }
-        }
-      }
-
-      //Push delete buttons
-      else if (e.target.classList.contains("item__remove") && counter > 0) {
-        let action = e.target;
-        counter -= 1;
-        action.nextElementSibling.textContent = `${counter}`;
-        let elements = document.querySelectorAll(".new__layer");
-        for (let i = 0; i < elements.length; i++) {
-          if (
-            action.getAttribute("data-name") ===
-            elements[i].getAttribute("data-name")
-          ) {
-            for (let j = 0; j < i; j++) {
-              elements[j].style.bottom = `${
-                elements[j].style.bottom.slice(0, -1) -
-                elements[i].getAttribute("data-width")
-              }%`;
-            }
-            bottomMargin -= elements[i].getAttribute("data-width");
-            elements[i].remove();
-            break;
-          }
-        }
-        function deleteNumToCalc() {
-          for (let i = 0; i < data.length; i++) {
-            if (action.getAttribute("data-name") === data[i].name) {
-              numOfMinutes -= data[i].min;
-              numOfGramms -= data[i].gramm;
-              numOfCalories -= data[i].kcal;
-              numOfMoney -= data[i].price;
-
-              timerOfMeal.textContent = `${numOfMinutes.toFixed(1)} min`;
-              weightOfMeal.textContent = `${numOfGramms.toFixed(1)} gr`;
-              caloriesOfMeal.textContent = `${numOfCalories.toFixed(1)} kcal`;
-              costs.forEach((cost) => {
-                cost.textContent = `$ ${numOfMoney.toFixed(1)}`;
-              });
-            }
-          }
-        }
-        deleteNumToCalc();
-      }
-
-      // Maybe Enough
-      if (numOfGramms >= 1400 || numOfMoney >= 50 || numOfCalories >= 2500) {
-        notice.classList.remove("_hide");
-        notice.innerHTML = `<span>Maybe enough???</span>
-        <img src="./img/icons/image216.png" alt="">`;
-      } else {
-        notice.classList.add("_hide");
-      }
-    });
-  });
-
-  function deleteTopBun() {
-    let elements = document.querySelectorAll(".new__layer");
-    for (let i = 0; i < elements.length; i++) {
-      if (elements[i].classList.contains("bun_top")) {
-        elements[i].remove();
-      }
-    }
-  }
   //Checkout button
+
   checkoutButtons.forEach((checkoutButton) => {
     checkoutButton.addEventListener("click", (e) => {
       e.preventDefault();
 
       if (numOfMoney < 5 && numOfMoney > 0) {
-        console.log(numOfMoney);
         notice.classList.remove("_hide");
         notice.innerHTML = ` <span>Minimum  order 5$</span>
         <img src="./img/icons/monkey.png" alt="">
@@ -288,51 +158,11 @@ window.addEventListener("DOMContentLoaded", function (e) {
       <img src="./img/icons/hmm.png" alt="">
   `;
       } else {
-        let newElement = document.createElement("img");
-        newElement.src = `${data[0].img}`;
-        newElement.classList.add("new__layer");
-        newElement.classList.add("bun_top");
-        newElement.style.zIndex = `${zIndex++}`;
-        newElement.style.bottom = `${bottomMargin + 10}%`;
-        constructorField.prepend(newElement);
-
-        let bunTimer = setTimeout(function () {
-          checkoutPage.classList.remove("_hide");
-        }, 2000);
-      }
-    });
-    checkoutPage.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (e.target == closePopup || e.target === checkoutPage) {
-        checkoutPage.classList.add("_hide");
-        deleteTopBun();
-      }
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (checkoutPage && e.key === "Escape") {
-        checkoutPage.classList.add("_hide");
-        deleteTopBun();
+        putTopBun(data);
       }
     });
   });
 
-  //Last step
-  popupButtons.addEventListener("click", (e) => {
-    if (e.target.classList.contains("_submit")) {
-      popup.innerHTML = `<div class='checkout__success'>
-      Your order will prepairing during ${numOfMinutes.toFixed(
-        0
-      )} min. Enjoy your meal
-      </div>
-      `;
-
-      const reload = setTimeout(function () {
-        location.reload();
-      }, 3000);
-    } else if (e.target.classList.contains("_cancel")) {
-      checkoutPage.classList.add("_hide");
-      deleteTopBun();
-    }
-  });
+  hideCheckoutPage();
+  confirmOrder(numOfMinutes);
 });
